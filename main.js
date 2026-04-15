@@ -5,9 +5,9 @@
 /* ── CONFIGURATION ── */
 var BOT_TOKEN = '8637686529:AAE7tDyRx4wGyGijbpZhmizlXlv6wv2B2MI';
 var CHAT_ID   = '-5225232338';
-var AMOCRM_DOMAIN = 'your-domain.amocrm.ru';
-var AMOCRM_TOKEN = 'your-api-token';
-var META_PIXEL_ID = 'your-pixel-id';
+var AMOCRM_DOMAIN = 'your-domain.amocrm.ru';  // Клиент вставляет свой домен (например: volo.amocrm.ru)
+var AMOCRM_TOKEN = 'your-api-token';           // Клиент вставляет свой API токен
+var META_PIXEL_ID = 'your-pixel-id';           // Клиент вставляет свой Meta Pixel ID
 
 /* ── Send to Telegram ── */
 function sendToTelegram(ism, telefon, model, manba) {
@@ -109,32 +109,35 @@ function openPopup(type) {
       btn.style.background = '';
     }
   }
+  // iOS/Android fix — сохраняем позицию скролла
+  var scrollY = window.scrollY;
   document.body.style.overflow = 'hidden';
-  document.body.style.paddingRight = '17px';
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + scrollY + 'px';
+  document.body.style.width = '100%';
+  document.body.dataset.scrollY = scrollY;
 }
 
 function closePopup(id) {
   var el = document.getElementById(id);
   if (el) el.classList.remove('active');
+  // Восстанавливаем позицию скролла
+  var scrollY = parseInt(document.body.dataset.scrollY || '0');
   document.body.style.overflow = '';
-  document.body.style.paddingRight = '';
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, scrollY);
 }
-
-function closePopupOutside(e, id) {
-  if (e.target === document.getElementById(id)) closePopup(id);
-}
-
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.popup-overlay.active').forEach(function(p) {
-      p.classList.remove('active');
-    });
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
+    var active = document.querySelector('.popup-overlay.active');
+    if (active) closePopup(active.id);
   }
 });
 
-/* ── Submit from product popup (mattress / bed) ── */
+
+/* ── Submit from product popup ── */
 function submitPopupForm(popupId, modelName) {
   var popup    = document.getElementById('popup-' + popupId);
   var nameInp  = popup.querySelector('.popup-input-name');
@@ -169,15 +172,19 @@ function submitPopupForm(popupId, modelName) {
   .then(function(results) {
     trackMetaPixel(name, phone, modelName);
     if (results[0].ok || results[1].ok) {
+      // Показываем сообщение об успехе
       popup.querySelector('.popup-form-wrap').style.display = 'none';
       var successMsg = popup.querySelector('.popup-success');
       if (!successMsg) {
+        // Если элемента нет, создаём его
         successMsg = document.createElement('div');
         successMsg.className = 'popup-success';
         successMsg.innerHTML = '<p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog\'lanamiz</span></p>';
         popup.querySelector('.popup-box').appendChild(successMsg);
       }
       successMsg.style.display = 'block';
+
+      // Закрываем попап через 3 секунды
       setTimeout(function() { closePopup('popup-' + popupId); }, 3000);
     } else {
       btn.textContent = '\u274C Xatolik';
@@ -211,7 +218,7 @@ function submitConsult() {
     return;
   }
 
-  var btn = document.querySelector('#popup-consult .btn-popup-submit');
+  var btn = document.querySelector('#popup-consult .btn-popup');
   btn.textContent = '\u23F3 Yuborilmoqda...';
   btn.disabled = true;
 
