@@ -5,9 +5,9 @@
 /* ── CONFIGURATION ── */
 var BOT_TOKEN = '8637686529:AAE7tDyRx4wGyGijbpZhmizlXlv6wv2B2MI';
 var CHAT_ID   = '-5225232338';
-var AMOCRM_DOMAIN = 'your-domain.amocrm.ru';  // Клиент вставляет свой домен (например: volo.amocrm.ru)
-var AMOCRM_TOKEN = 'your-api-token';           // Клиент вставляет свой API токен
-var META_PIXEL_ID = 'your-pixel-id';           // Клиент вставляет свой Meta Pixel ID
+var AMOCRM_DOMAIN = 'your-domain.amocrm.ru';
+var AMOCRM_TOKEN = 'your-api-token';
+var META_PIXEL_ID = 'your-pixel-id';
 
 /* ── Send to Telegram ── */
 function sendToTelegram(ism, telefon, model, manba) {
@@ -94,7 +94,6 @@ function openPopup(type) {
   var el = document.getElementById('popup-' + type);
   if (el) {
     el.classList.add('active');
-    // Reset form state on open
     var formWrap = el.querySelector('.popup-form-wrap');
     var success  = el.querySelector('.popup-success');
     if (formWrap) formWrap.style.display = 'block';
@@ -111,12 +110,14 @@ function openPopup(type) {
     }
   }
   document.body.style.overflow = 'hidden';
+  document.body.style.paddingRight = '17px';
 }
 
 function closePopup(id) {
   var el = document.getElementById(id);
   if (el) el.classList.remove('active');
   document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
 }
 
 function closePopupOutside(e, id) {
@@ -129,11 +130,11 @@ document.addEventListener('keydown', function(e) {
       p.classList.remove('active');
     });
     document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
   }
 });
 
 /* ── Submit from product popup (mattress / bed) ── */
-submitPopupForm/* ── Submit from product popup (mattress / bed) ── */
 function submitPopupForm(popupId, modelName) {
   var popup    = document.getElementById('popup-' + popupId);
   var nameInp  = popup.querySelector('.popup-input-name');
@@ -168,19 +169,15 @@ function submitPopupForm(popupId, modelName) {
   .then(function(results) {
     trackMetaPixel(name, phone, modelName);
     if (results[0].ok || results[1].ok) {
-      // Показываем сообщение об успехе
       popup.querySelector('.popup-form-wrap').style.display = 'none';
       var successMsg = popup.querySelector('.popup-success');
       if (!successMsg) {
-        // Если элемента нет, создаём его
         successMsg = document.createElement('div');
         successMsg.className = 'popup-success';
         successMsg.innerHTML = '<p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog\'lanamiz</span></p>';
         popup.querySelector('.popup-box').appendChild(successMsg);
       }
       successMsg.style.display = 'block';
-
-      // Закрываем попап через 3 секунды
       setTimeout(function() { closePopup('popup-' + popupId); }, 3000);
     } else {
       btn.textContent = '\u274C Xatolik';
@@ -214,7 +211,7 @@ function submitConsult() {
     return;
   }
 
-  var btn = document.querySelector('#popup-consult .btn-popup');
+  var btn = document.querySelector('#popup-consult .btn-popup-submit');
   btn.textContent = '\u23F3 Yuborilmoqda...';
   btn.disabled = true;
 
@@ -362,40 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-/* ── Popup open/close ── */
-function openPopup(type) {
-  document.querySelectorAll('.popup-overlay').forEach(function(p) {
-    p.classList.remove('active');
-  });
-  var el = document.getElementById('popup-' + type);
-  if (el) {
-    el.classList.add('active');
-    // Reset form state on open
-    var formWrap = el.querySelector('.popup-form-wrap');
-    var success  = el.querySelector('.popup-success');
-    if (formWrap) formWrap.style.display = 'block';
-    if (success)  success.style.display  = 'none';
-    el.querySelectorAll('input').forEach(function(inp) {
-      inp.value = '';
-      inp.style.borderColor = '#444';
-    });
-    var btn = el.querySelector('.btn-popup-submit');
-    if (btn) {
-      btn.textContent = 'Buyurtma berish \u2192';
-      btn.disabled = false;
-      btn.style.background = '';
-    }
-  }
-  document.body.style.overflow = 'hidden';
-  document.body.style.paddingRight = '17px'; // ← ДОБАВИТЬ ЭТУ СТРОКУ
-}
 
-function closePopup(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.remove('active');
-  document.body.style.overflow = '';
-  document.body.style.paddingRight = ''; // ← ДОБАВИТЬ ЭТУ СТРОКУ
-}
   /* Scroll reveal */
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
