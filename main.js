@@ -362,7 +362,40 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+/* ── Popup open/close ── */
+function openPopup(type) {
+  document.querySelectorAll('.popup-overlay').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  var el = document.getElementById('popup-' + type);
+  if (el) {
+    el.classList.add('active');
+    // Reset form state on open
+    var formWrap = el.querySelector('.popup-form-wrap');
+    var success  = el.querySelector('.popup-success');
+    if (formWrap) formWrap.style.display = 'block';
+    if (success)  success.style.display  = 'none';
+    el.querySelectorAll('input').forEach(function(inp) {
+      inp.value = '';
+      inp.style.borderColor = '#444';
+    });
+    var btn = el.querySelector('.btn-popup-submit');
+    if (btn) {
+      btn.textContent = 'Buyurtma berish \u2192';
+      btn.disabled = false;
+      btn.style.background = '';
+    }
+  }
+  document.body.style.overflow = 'hidden';
+  document.body.style.paddingRight = '17px'; // ← ДОБАВИТЬ ЭТУ СТРОКУ
+}
 
+function closePopup(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.remove('active');
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = ''; // ← ДОБАВИТЬ ЭТУ СТРОКУ
+}
   /* Scroll reveal */
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
