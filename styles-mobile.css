@@ -383,3 +383,26 @@
     right: 12px;
   }
 }
+@media (max-width: 768px) {
+  .popup-overlay {
+    padding: 16px;
+  }
+
+  .popup-box {
+    max-width: 100%;
+    width: 100%;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-overlay {
+    padding: 12px;
+  }
+
+  .popup-box {
+    max-width: 100%;
+    width: 100%;
+    padding: 24px 16px;
+  }
+}
