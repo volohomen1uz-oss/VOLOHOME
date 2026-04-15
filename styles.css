@@ -384,7 +384,6 @@ nav {
 }
 .see-all-btn:hover { gap: 12px; }
 
-/* ── Cards Scroll Wrapper ── */
 .cards-scroll-wrapper {
   position: relative;
 }
@@ -395,7 +394,6 @@ nav {
   gap: 20px;
 }
 
-/* Mattress section has 5 items — show 4+1 on desktop */
 #mattress-grid {
   grid-template-columns: repeat(5, 1fr);
 }
@@ -491,7 +489,6 @@ nav {
 }
 .btn-card:hover { background: #d46a1a; transform: scale(0.98); }
 
-/* Scroll dots */
 .scroll-dots {
   display: none;
   justify-content: center;
@@ -742,10 +739,11 @@ footer {
   font-size: 11px;
 }
 
+/* ── POPUPS ── */
 .popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -899,7 +897,7 @@ footer {
   margin-top: 10px;
   margin-bottom: 0;
 }
--->
+
 .orange-divider {
   height: 4px;
   background: linear-gradient(to right, var(--orange), var(--orange-dark));
