@@ -7,6 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="styles-mobile.css" />
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1234567890123456');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1234567890123456&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -46,7 +61,7 @@
 <!-- ══════════ BLOCK 1: HERO ══════════ -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">2019 YILDAN · VOLO.UZ</div>
+    <div class="hero-badge">2018 YILDAN · VOLO.UZ</div>
     <h1>Uyingizda <em>5 yulduzli mehmonxona</em> qulayligini VOLO bilan ta'minlaymiz!</h1>
     <p class="hero-desc">
       O'zbekiston bozorida krovat va matraslarni alohida, professional tarzda taqdim etuvchi birinchi kompaniya.
@@ -58,7 +73,6 @@
       <li>Yilda bir marta bepul professional cleaning xizmati!</li>
     </ul>
     <div class="hero-btns">
-      <a href="https://www.instagram.com/volo.uzb/" target="_blank" class="btn-primary">Katalogni ko'rish</a>
       <button class="btn-secondary" onclick="openPopup('consult')">Konsultatsiya</button>
     </div>
   </div>
@@ -87,7 +101,7 @@
     <div class="stat-label">HORECA mehmonxonalari</div>
   </div>
   <div class="stat-item reveal delay-3">
-    <div class="stat-num">6 yil</div>
+    <div class="stat-num">8 yil</div>
     <div class="stat-label">Bozorda</div>
   </div>
   <div class="stat-item reveal delay-4">
@@ -236,7 +250,7 @@
         <div class="card-body">
           <div class="card-name dark">ROMA</div>
           <div class="card-sub">Zamonaviy dizayn · Premium sifat</div>
-          <button class="btn-card" onclick="openPopup('bed')">Batafsil ma'lumot</button>
+          <button class="btn-card" onclick="openPopup('bed-roma')">Batafsil ma'lumot</button>
         </div>
       </div>
 
@@ -249,7 +263,7 @@
         <div class="card-body">
           <div class="card-name dark">ZEN</div>
           <div class="card-sub">Minimalist · Ekologik · Qulay</div>
-          <button class="btn-card" onclick="openPopup('bed')">Batafsil ma'lumot</button>
+          <button class="btn-card" onclick="openPopup('bed-zen')">Batafsil ma'lumot</button>
         </div>
       </div>
 
@@ -263,7 +277,7 @@
         <div class="card-body">
           <div class="card-name dark">Comfort krovat</div>
           <div class="card-sub">5★ Mehmonxona standarti · Lyuks</div>
-          <button class="btn-card" onclick="openPopup('bed')">Batafsil ma'lumot</button>
+          <button class="btn-card" onclick="openPopup('bed-comfort')">Batafsil ma'lumot</button>
         </div>
       </div>
 
@@ -276,7 +290,7 @@
         <div class="card-body">
           <div class="card-name dark">Venera</div>
           <div class="card-sub">Ko'tarma mexanizm · Keng saqlash joyi</div>
-          <button class="btn-card" onclick="openPopup('bed')">Batafsil ma'lumot</button>
+          <button class="btn-card" onclick="openPopup('bed-venera')">Batafsil ma'lumot</button>
         </div>
       </div>
 
@@ -300,16 +314,16 @@
         onerror="this.style.background='#2C2C2C';this.style.display='block';this.removeAttribute('onerror')"
       />
       <div class="about-accent">
-        <strong>6</strong>
+        <strong>8</strong>
         <span>yil bozorda</span>
       </div>
     </div>
     <div class="about-text reveal-right">
       <div class="section-eyebrow">Biz haqimizda</div>
-      <h2 class="section-title white" style="margin-bottom:20px;">Biz 6 yildirki, O'zbekiston mebel bozorida o'z standartlarimizni yaratib kelmoqdamiz</h2>
+      <h2 class="section-title white" style="margin-bottom:20px;">Biz 8 yildirki, O'zbekiston mebel bozorida o'z standartlarimizni yaratib kelmoqdamiz</h2>
       <p>Nafaqat krovat va matraslar, balki zamonaviy divan, kreslo va mehmonxona mebellari bo'yicha ham yetakchi mutaxassismiz.</p>
       <ul class="about-list">
-        <li>1000 dan ortiq xonadonlarga sifatli uyqu va shinamlik olib kirdik</li>
+        <li>1000 dan ortiq xonadonlarga sifatli uyku va shinamlik olib kirdik</li>
         <li>50 dan ziyod yirik mehmonxonalar (HORECA) ishonchini oqlab, ularni premium darajadagi krovat va matraslar bilan ta'minladik</li>
         <li>O'zbekistonda birinchi bo'lib vakuumli matraslarni yetkazib berishni yo'lga qo'yganmiz</li>
         <li>Har bir sotilayotgan mahsulotga rasmiy kafolat beriladi</li>
@@ -324,7 +338,7 @@
           <div class="astat-label">Mehmonxona va HORECA obyektlari</div>
         </div>
         <div class="astat">
-          <div class="astat-num">6 yil</div>
+          <div class="astat-num">8 yil</div>
           <div class="astat-label">Mebel bozorida</div>
         </div>
         <div class="astat">
@@ -396,107 +410,345 @@
   </div>
 </section>
 
-<!-- ══════════ POPUPS — MATTRESSES ══════════ -->
+<!-- ══════════ POPUPS — MATRASLAR ══════════ -->
 
+<!-- FOAM MATRAS -->
 <div class="popup-overlay" id="popup-mattress-foam" onclick="closePopupOutside(event, 'popup-mattress-foam')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-mattress-foam')">✕</button>
-    <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
-    <h3>FOAM MATRAS</h3>
-    <p>Ortopedik matras, balandligi 20 sm, ichi 100% porolondan tashkil topgan. Belda grijasi bor insonlar va bolalar uchun tavsiya etiladi. Ikki taraflama matras — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq.</p>
-    <ul class="popup-features">
-      <li>Balandligi: 20 sm</li>
-      <li>Material: 100% porolon</li>
-      <li>Ikki taraflama: qattiq / o'rta qattiq</li>
-      <li>Kafolat muddati: 18 oy</li>
-      <li>Bepul yetkazib berish Toshkentga</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-mattress-foam')">Konsultatsiya olish va buyurtma berish</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
+      <h3>FOAM MATRAS</h3>
+      <p>Ortopedik matras, balandligi 20 sm, ichi 100% porolondan tashkil topgan. Belda grijasi bor insonlar va bolalar uchun tavsiya etiladi. Ikki taraflama — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq.</p>
+      <ul class="popup-features">
+        <li>Balandligi: 20 sm</li>
+        <li>Material: 100% porolon</li>
+        <li>Ikki taraflama: qattiq / o'rta qattiq</li>
+        <li>Kafolat muddati: 18 oy</li>
+        <li>Bepul yetkazib berish Toshkentga</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-mattress-foam .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('mattress-foam', 'FOAM MATRAS')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
+<!-- DOUBLE MATRAS -->
 <div class="popup-overlay" id="popup-mattress-double" onclick="closePopupOutside(event, 'popup-mattress-double')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-mattress-double')">✕</button>
-    <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
-    <h3>DOUBLE MATRAS</h3>
-    <p>Ortopedik matras, balandligi 25 sm. Ichi 100% porolondan iborat. Ikki taraflama — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq. Materiali Turkiya.</p>
-    <ul class="popup-features">
-      <li>Balandligi: 25 sm</li>
-      <li>Material: 100% porolon (Turkiya)</li>
-      <li>Ikki taraflama: qattiq / o'rta qattiq</li>
-      <li>Kafolat muddati: 3 yil</li>
-      <li>Bepul yetkazib berish Toshkentga</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-mattress-double')">Konsultatsiya olish va buyurtma berish</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
+      <h3>DOUBLE MATRAS</h3>
+      <p>Ortopedik matras, balandligi 25 sm. Ichi 100% porolondan iborat. Ikki taraflama — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq. Materiali Turkiya.</p>
+      <ul class="popup-features">
+        <li>Balandligi: 25 sm</li>
+        <li>Material: 100% porolon (Turkiya)</li>
+        <li>Ikki taraflama: qattiq / o'rta qattiq</li>
+        <li>Kafolat muddati: 3 yil</li>
+        <li>Bepul yetkazib berish Toshkentga</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-mattress-double .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('mattress-double', 'DOUBLE MATRAS')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
+<!-- LUNA MATRAS -->
 <div class="popup-overlay" id="popup-mattress-luna" onclick="closePopupOutside(event, 'popup-mattress-luna')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-mattress-luna')">✕</button>
-    <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
-    <h3>Luna matrasi</h3>
-    <p>Ortopedik matras, balandligi 25 sm, ichi 100% porolondan tashkil topgan. Belda grijasi bor insonlar va bolalar uchun tavsiya etiladi. Ikki taraflama — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq.</p>
-    <ul class="popup-features">
-      <li>Balandligi: 25 sm</li>
-      <li>Material: 100% porolon</li>
-      <li>Ikki taraflama: qattiq / o'rta qattiq</li>
-      <li>Kafolat muddati: 18 oy</li>
-      <li>Bepul yetkazib berish Toshkentga</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-mattress-luna')">Konsultatsiya olish va buyurtma berish</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
+      <h3>Luna matrasi</h3>
+      <p>Ortopedik matras, balandligi 25 sm, ichi 100% porolondan tashkil topgan. Belda grijasi bor insonlar va bolalar uchun tavsiya etiladi. Ikki taraflama — bir tarafi qattiq, ikkinchi tarafi o'rta qattiq.</p>
+      <ul class="popup-features">
+        <li>Balandligi: 25 sm</li>
+        <li>Material: 100% porolon</li>
+        <li>Ikki taraflama: qattiq / o'rta qattiq</li>
+        <li>Kafolat muddati: 18 oy</li>
+        <li>Bepul yetkazib berish Toshkentga</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-mattress-luna .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('mattress-luna', 'Luna matrasi')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
+<!-- FLEX MATRAS -->
 <div class="popup-overlay" id="popup-mattress-flex" onclick="closePopupOutside(event, 'popup-mattress-flex')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-mattress-flex')">✕</button>
-    <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
-    <h3>FLEX matrasi</h3>
-    <p>Anatomik matras, ikki tomonlama — bir tarafi yumshoq, bir tarafi o'rta yumshoq. Ichi 100% porolondan tashkil topgan. Balandligi 25 sm, materiali Turkiya. Tana vazni yengil, grijasi yo'q insonlar uchun tavsiya etiladi.</p>
-    <ul class="popup-features">
-      <li>Balandligi: 25 sm</li>
-      <li>Material: 100% porolon (Turkiya)</li>
-      <li>Ikki taraflama: yumshoq / o'rta yumshoq</li>
-      <li>Kafolat muddati: 3 yil</li>
-      <li>Bepul yetkazib berish Toshkentga</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-mattress-flex')">Konsultatsiya olish va buyurtma berish</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
+      <h3>FLEX matrasi</h3>
+      <p>Anatomik matras, ikki tomonlama — bir tarafi yumshoq, bir tarafi o'rta yumshoq. Ichi 100% porolondan tashkil topgan. Balandligi 25 sm, materiali Turkiya. Tana vazni yengil, grijasi yo'q insonlar uchun tavsiya etiladi.</p>
+      <ul class="popup-features">
+        <li>Balandligi: 25 sm</li>
+        <li>Material: 100% porolon (Turkiya)</li>
+        <li>Ikki taraflama: yumshoq / o'rta yumshoq</li>
+        <li>Kafolat muddati: 3 yil</li>
+        <li>Bepul yetkazib berish Toshkentga</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-mattress-flex .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('mattress-flex', 'FLEX matrasi')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
+<!-- VOLO POCKET -->
 <div class="popup-overlay" id="popup-mattress-pocket" onclick="closePopupOutside(event, 'popup-mattress-pocket')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-mattress-pocket')">✕</button>
-    <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
-    <h3>Volo POCKET</h3>
-    <p>Anatomik matras hisoblanib, ichi bir-biriga bog'liq bo'lmagan alohida qopchalarda joylashgan prujinalardan iborat. Ikki taraflama — bir tarafi yumshoq, bir tarafi o'rta yumshoqlikda. Balandligi 20 sm. Tana vazni yengil va belda grijasi yo'q insonlar uchun tavsiya qilinadi.</p>
-    <ul class="popup-features">
-      <li>Balandligi: 20 sm</li>
-      <li>Turi: Pocket spring (qopchadagi prujinalar)</li>
-      <li>Ikki taraflama: yumshoq / o'rta yumshoq</li>
-      <li>Kafolat muddati: 18 oy</li>
-      <li>Bepul yetkazib berish Toshkentga</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-mattress-pocket')">Konsultatsiya olish va buyurtma berish</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Matraslar · VOLO HOME</div>
+      <h3>Volo POCKET</h3>
+      <p>Anatomik matras hisoblanib, ichi bir-biriga bog'liq bo'lmagan alohida qopchalarda joylashgan prujinalardan iborat. Ikki taraflama — bir tarafi yumshoq, bir tarafi o'rta yumshoqlikda. Balandligi 20 sm.</p>
+      <ul class="popup-features">
+        <li>Balandligi: 20 sm</li>
+        <li>Turi: Pocket spring (qopchadagi prujinalar)</li>
+        <li>Ikki taraflama: yumshoq / o'rta yumshoq</li>
+        <li>Kafolat muddati: 18 oy</li>
+        <li>Bepul yetkazib berish Toshkentga</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-mattress-pocket .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('mattress-pocket', 'Volo POCKET')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
-<!-- ══════════ POPUPS — BEDS ══════════ -->
-<div class="popup-overlay" id="popup-bed" onclick="closePopupOutside(event, 'popup-bed')">
+<!-- ══════════ POPUPS — KROVATLAR ══════════ -->
+
+<!-- ROMA KROVAT -->
+<div class="popup-overlay" id="popup-bed-roma" onclick="closePopupOutside(event, 'popup-bed-roma')">
   <div class="popup-box">
-    <button class="popup-close" onclick="closePopup('popup-bed')">✕</button>
-    <div class="popup-eyebrow">Krovatlar · VOLO HOME</div>
-    <h3>Mutaxassis bilan bog'lanish</h3>
-    <p>Biz sizga interyer va qulaylikka mos keladigan krovalni tanlab beramiz.</p>
-    <ul class="popup-features">
-      <li>Parametrlar bo'yicha individual tanlov</li>
-      <li>O'lchov va o'rnatish sovg'a sifatida</li>
-      <li>Keng assortiment: ROMA, ZEN, Comfort, Venera</li>
-      <li>Har bir krovatga 2 yil kafolat</li>
-    </ul>
-    <button class="btn-popup" onclick="scrollTo('#form');closePopup('popup-bed')">Mutaxassis bilan bog'lanish</button>
+    <button class="popup-close" onclick="closePopup('popup-bed-roma')">✕</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Krovatlar · VOLO HOME</div>
+      <h3>Mutaxassis bilan bog'lanish</h3>
+      <p>Biz sizga interyer va qulaylikka mos keladigan krovalni tanlab beramiz. ROMA modeli — zamonaviy dizayn va premium sifat.</p>
+      <ul class="popup-features">
+        <li>Parametrlar bo'yicha individual tanlov</li>
+        <li>O'lchov va o'rnatish sovg'a sifatida</li>
+        <li>ROMA — zamonaviy dizayn · Premium sifat</li>
+        <li>Har bir krovatga 2 yil kafolat</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-bed-roma .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('bed-roma', 'ROMA krovat')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ZEN KROVAT -->
+<div class="popup-overlay" id="popup-bed-zen" onclick="closePopupOutside(event, 'popup-bed-zen')">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popup-bed-zen')">✕</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Krovatlar · VOLO HOME</div>
+      <h3>Mutaxassis bilan bog'lanish</h3>
+      <p>Biz sizga interyer va qulaylikka mos keladigan krovalni tanlab beramiz. ZEN modeli — minimalist · ekologik · qulay.</p>
+      <ul class="popup-features">
+        <li>Parametrlar bo'yicha individual tanlov</li>
+        <li>O'lchov va o'rnatish sovg'a sifatida</li>
+        <li>ZEN — minimalist · ekologik · qulay</li>
+        <li>Har bir krovatga 2 yil kafolat</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-bed-zen .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('bed-zen', 'ZEN krovat')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- COMFORT KROVAT -->
+<div class="popup-overlay" id="popup-bed-comfort" onclick="closePopupOutside(event, 'popup-bed-comfort')">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popup-bed-comfort')">✕</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Krovatlar · VOLO HOME</div>
+      <h3>Mutaxassis bilan bog'lanish</h3>
+      <p>Biz sizga interyer va qulaylikka mos keladigan krovalni tanlab beramiz. Comfort krovat — 5★ mehmonxona standarti · lyuks.</p>
+      <ul class="popup-features">
+        <li>Parametrlar bo'yicha individual tanlov</li>
+        <li>O'lchov va o'rnatish sovg'a sifatida</li>
+        <li>Comfort — 5★ mehmonxona standarti · lyuks</li>
+        <li>Har bir krovatga 2 yil kafolat</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-bed-comfort .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('bed-comfort', 'Comfort krovat')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- VENERA KROVAT -->
+<div class="popup-overlay" id="popup-bed-venera" onclick="closePopupOutside(event, 'popup-bed-venera')">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popup-bed-venera')">✕</button>
+
+    <div class="popup-info-wrap" style="display: block;">
+      <div class="popup-eyebrow">Krovatlar · VOLO HOME</div>
+      <h3>Mutaxassis bilan bog'lanish</h3>
+      <p>Biz sizga interyer va qulaylikka mos keladigan krovalni tanlab beramiz. Venera modeli — ko'tarma mexanizm · keng saqlash joyi.</p>
+      <ul class="popup-features">
+        <li>Parametrlar bo'yicha individual tanlov</li>
+        <li>O'lchov va o'rnatish sovg'a sifatida</li>
+        <li>Venera — ko'tarma mexanizm · keng saqlash joyi</li>
+        <li>Har bir krovatga 2 yil kafolat</li>
+      </ul>
+      <button class="btn-popup" onclick="this.parentElement.style.display='none'; document.querySelector('#popup-bed-venera .popup-form-wrap').style.display='block';">Buyurtma berish →</button>
+    </div>
+
+    <div class="popup-form-wrap" style="display: none;">
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" class="popup-input-name" placeholder="Masalan: Alisher Abdullayev">
+      </div>
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" class="popup-input-phone" placeholder="+998 (XX) XXX-XX-XX">
+      </div>
+      <button class="btn-popup-submit" onclick="submitPopupForm('bed-venera', 'Venera krovat')">Buyurtma berish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+    </div>
+
+    <div class="popup-success" style="display: none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
+    </div>
   </div>
 </div>
 
@@ -504,44 +756,33 @@
 <div class="popup-overlay" id="popup-consult" onclick="closePopupOutside(event, 'popup-consult')">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup('popup-consult')">✕</button>
-    <div class="popup-eyebrow">Bepul konsultatsiya</div>
-    <h3>Yotoqxonangiz uchun ideal yechim tanlab beramiz</h3>
 
     <div id="consult-form-wrap">
-      <div class="field" style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#fff;margin-bottom:6px;">Ismingiz</label>
-        <input type="text" id="consult-name" placeholder="Masalan: Alisher"
-          style="width:100%;background:#3a3a3a;border:1.5px solid #444;padding:11px 14px;font-size:13px;color:#fff;font-family:var(--sans);outline:none;transition:border-color 0.2s;"
-          onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#444'" />
+      <div class="popup-eyebrow">Bepul konsultatsiya</div>
+      <h3>Yotoqxonangiz uchun ideal yechim tanlab beramiz</h3>
+      <div class="popup-field">
+        <label>Ism va Familiya</label>
+        <input type="text" id="consult-name" placeholder="Masalan: Alisher Abdullayev">
       </div>
-      <div class="field" style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#fff;margin-bottom:6px;">Telefon raqamingiz</label>
-        <input type="tel" id="consult-phone" placeholder="+998 __ — __ — __"
-          style="width:100%;background:#3a3a3a;border:1.5px solid #444;padding:11px 14px;font-size:13px;color:#fff;font-family:var(--sans);outline:none;transition:border-color 0.2s;"
-          onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#444'" />
+      <div class="popup-field">
+        <label>Telefon raqami</label>
+        <input type="tel" id="consult-phone" placeholder="+998 (XX) XXX-XX-XX">
       </div>
-      <div class="field" style="margin-bottom:20px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#fff;margin-bottom:6px;">Sizni nima qiziqtirmoqda?</label>
-        <div style="position:relative;">
-          <select id="consult-interest"
-            style="width:100%;background:#3a3a3a;border:1.5px solid #444;padding:11px 14px;font-size:13px;color:#fff;font-family:var(--sans);outline:none;appearance:none;-webkit-appearance:none;transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#444'">
-            <option value="">Tanlang...</option>
-            <option>Krovat</option>
-            <option>Matras</option>
-            <option>Ikkalasi ham</option>
-          </select>
-          <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--orange);pointer-events:none;font-size:12px;">▾</span>
-        </div>
+      <div class="popup-field">
+        <label>Sizni nima qiziqtirmoqda?</label>
+        <select id="consult-interest" style="width:100%;background:#3a3a3a;border:1.5px solid #444;padding:11px 14px;font-size:13px;color:#fff;font-family:var(--sans);outline:none;-webkit-appearance:none;appearance:none;">
+          <option value="">Tanlang...</option>
+          <option>Krovat</option>
+          <option>Matras</option>
+          <option>Ikkalasi ham</option>
+        </select>
       </div>
-      <button class="btn-popup" onclick="submitConsult()">Ma'lumotlarni yuborish →</button>
-      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px;">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
+      <button class="btn-popup-submit" onclick="submitConsult()">Ma'lumotlarni yuborish →</button>
+      <p class="popup-note">Ish vaqtida 30 daqiqa ichida siz bilan bog'lanamiz</p>
     </div>
 
-    <div id="consult-success" style="display:none;text-align:center;padding:20px 0;">
-      <div style="font-size:40px;margin-bottom:16px;">✅</div>
-      <h3 style="color:var(--orange);margin-bottom:10px;">Rahmat!</h3>
-      <p style="color:#ccc;font-size:14px;">Yaqin orada siz bilan bog'lanamiz.</p>
+    <div id="consult-success" style="display:none;">
+      <p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog'lanamiz</span></p>
     </div>
   </div>
 </div>
