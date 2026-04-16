@@ -8,6 +8,35 @@ var CHAT_ID   = '-5225232338';
 var WORKER_URL = 'https://volo-amocrm.volohomen1uz.workers.dev';
 var META_PIXEL_ID = '2066265433940004';
 
+/* ── Phone validation ── */
+/* Минимум 9 цифр (917773609 = 9 цифр), максимум 13 цифр */
+function validatePhone(phone) {
+  var digits = phone.replace(/\D/g, '');
+  return digits.length >= 9 && digits.length <= 13;
+}
+
+/* ── Phone input: только цифры, +, (, ), -, пробел ── */
+function restrictPhoneInput(input) {
+  input.addEventListener('input', function() {
+    /* Сохраняем только допустимые символы */
+    var cleaned = this.value.replace(/[^\d+\-()\s]/g, '');
+    if (this.value !== cleaned) {
+      this.value = cleaned;
+    }
+  });
+
+  input.addEventListener('keypress', function(e) {
+    var allowed = /[\d+\-()\s]/;
+    if (!allowed.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+      e.preventDefault();
+    }
+  });
+
+  /* На мобильных — только числовая клавиатура */
+  input.setAttribute('inputmode', 'tel');
+  input.setAttribute('type', 'tel');
+}
+
 /* ── Send to Telegram ── */
 function sendToTelegram(ism, telefon, model, manba) {
   var now = new Date();
@@ -77,6 +106,10 @@ function openPopup(type) {
       inp.value = '';
       inp.style.borderColor = '#444';
     });
+    /* Применяем ограничения к телефонным полям */
+    el.querySelectorAll('.popup-input-phone, input[placeholder*="telefon"], input[placeholder*="raqam"]').forEach(function(inp) {
+      restrictPhoneInput(inp);
+    });
     var btn = el.querySelector('.btn-popup-submit');
     if (btn) {
       btn.textContent = 'Buyurtma berish \u2192';
@@ -84,7 +117,7 @@ function openPopup(type) {
       btn.style.background = '';
     }
   }
-  // iOS/Android fix — сохраняем позицию скролла
+  /* iOS/Android fix — сохраняем позицию скролла */
   var scrollY = window.scrollY;
   document.body.style.overflow = 'hidden';
   document.body.style.position = 'fixed';
@@ -96,7 +129,7 @@ function openPopup(type) {
 function closePopup(id) {
   var el = document.getElementById(id);
   if (el) el.classList.remove('active');
-  // Восстанавливаем позицию скролла
+  /* Восстанавливаем позицию скролла */
   var scrollY = parseInt(document.body.dataset.scrollY || '0');
   document.body.style.overflow = '';
   document.body.style.position = '';
@@ -104,6 +137,7 @@ function closePopup(id) {
   document.body.style.width = '';
   window.scrollTo(0, scrollY);
 }
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     var active = document.querySelector('.popup-overlay.active');
@@ -111,6 +145,15 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+/* ── Show phone error ── */
+function showPhoneError(input) {
+  input.style.borderColor = '#E87722';
+  input.placeholder = 'Kamida 9 ta raqam kiriting!';
+  setTimeout(function() {
+    input.style.borderColor = '#444';
+    input.placeholder = 'Telefon raqamingiz';
+  }, 2500);
+}
 
 /* ── Submit from product popup ── */
 function submitPopupForm(popupId, modelName) {
@@ -123,16 +166,18 @@ function submitPopupForm(popupId, modelName) {
   var phone = phoneInp.value.trim();
 
   var ok = true;
+
   if (!name) {
     nameInp.style.borderColor = '#E87722';
     ok = false;
-    setTimeout(function() { nameInp.style.borderColor = '#444'; }, 2000);
+    setTimeout(function() { nameInp.style.borderColor = '#444'; }, 2500);
   }
-  if (!phone) {
-    phoneInp.style.borderColor = '#E87722';
+
+  if (!phone || !validatePhone(phone)) {
+    showPhoneError(phoneInp);
     ok = false;
-    setTimeout(function() { phoneInp.style.borderColor = '#444'; }, 2000);
   }
+
   if (!ok) return;
 
   btn.textContent = '\u23F3 Yuborilmoqda...';
@@ -180,16 +225,33 @@ function submitPopupForm(popupId, modelName) {
 
 /* ── Consult popup (hero button) ── */
 function submitConsult() {
-  var name     = document.getElementById('consult-name').value.trim();
-  var phone    = document.getElementById('consult-phone').value.trim();
-  var interest = document.getElementById('consult-interest').value || '\u2014';
+  var nameEl     = document.getElementById('consult-name');
+  var phoneEl    = document.getElementById('consult-phone');
+  var interestEl = document.getElementById('consult-interest');
 
-  if (!name || !phone) {
-    alert('Iltimos, ism va telefon raqamni kiriting.');
-    return;
+  var name     = nameEl ? nameEl.value.trim() : '';
+  var phone    = phoneEl ? phoneEl.value.trim() : '';
+  var interest = interestEl ? (interestEl.value || '\u2014') : '\u2014';
+
+  var ok = true;
+
+  if (!name) {
+    if (nameEl) {
+      nameEl.style.borderColor = '#E87722';
+      setTimeout(function() { nameEl.style.borderColor = ''; }, 2500);
+    }
+    ok = false;
   }
 
+  if (!phone || !validatePhone(phone)) {
+    if (phoneEl) showPhoneError(phoneEl);
+    ok = false;
+  }
+
+  if (!ok) return;
+
   var btn = document.querySelector('#popup-consult .btn-popup');
+  if (!btn) return;
   btn.textContent = '\u23F3 Yuborilmoqda...';
   btn.disabled = true;
 
@@ -202,16 +264,18 @@ function submitConsult() {
   .then(function(results) {
     trackMetaPixel(name, phone, interest);
     if (results[0].ok || results[1].ok) {
-      document.getElementById('consult-form-wrap').style.display = 'none';
-      document.getElementById('consult-success').style.display = 'block';
+      var formWrap = document.getElementById('consult-form-wrap');
+      var successEl = document.getElementById('consult-success');
+      if (formWrap) formWrap.style.display = 'none';
+      if (successEl) successEl.style.display = 'block';
       setTimeout(function() {
         closePopup('popup-consult');
         setTimeout(function() {
-          document.getElementById('consult-form-wrap').style.display = 'block';
-          document.getElementById('consult-success').style.display = 'none';
-          document.getElementById('consult-name').value = '';
-          document.getElementById('consult-phone').value = '';
-          document.getElementById('consult-interest').value = '';
+          if (formWrap) formWrap.style.display = 'block';
+          if (successEl) successEl.style.display = 'none';
+          if (nameEl) nameEl.value = '';
+          if (phoneEl) phoneEl.value = '';
+          if (interestEl) interestEl.value = '';
           btn.textContent = "Ma'lumotlarni yuborish \u2192";
           btn.disabled = false;
         }, 400);
@@ -338,6 +402,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  /* ── Применяем ограничения к телефонным полям ── */
+  /* Консультация popup */
+  var consultPhone = document.getElementById('consult-phone');
+  if (consultPhone) restrictPhoneInput(consultPhone);
+
+  /* Нижняя форма */
+  var bottomPhoneField = document.querySelector('#form .field input[type="tel"], #form .field input[placeholder*="Telefon"]');
+  if (bottomPhoneField) restrictPhoneInput(bottomPhoneField);
+
+  /* ── Кнопка Konsultatsiya в hero (мобильный фикс) ── */
+  document.querySelectorAll('[onclick*="openPopup(\'consult\')"], .btn-primary, .nav-cta').forEach(function(btn) {
+    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf('consult') !== -1) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openPopup('consult');
+      });
+    }
+  });
+
   /* Scroll reveal */
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -369,13 +452,26 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.addEventListener('click', function() {
       var fields = document.querySelectorAll('#form .field input, #form .field select');
       var ok = true;
-      fields.forEach(function(inp) {
+
+      fields.forEach(function(inp, index) {
         if (!inp.value) {
           inp.style.borderColor = '#E87722';
           ok = false;
-          setTimeout(function() { inp.style.borderColor = ''; }, 2000);
+          setTimeout(function() { inp.style.borderColor = ''; }, 2500);
+        }
+        /* Второе поле — телефон */
+        if (index === 1 && inp.value && !validatePhone(inp.value)) {
+          inp.style.borderColor = '#E87722';
+          var origPlaceholder = inp.placeholder;
+          inp.placeholder = 'Kamida 9 ta raqam!';
+          ok = false;
+          setTimeout(function() {
+            inp.style.borderColor = '';
+            inp.placeholder = origPlaceholder;
+          }, 2500);
         }
       });
+
       if (!ok) return;
 
       var ism      = fields[0].value;
