@@ -5,9 +5,8 @@
 /* ── CONFIGURATION ── */
 var BOT_TOKEN = '8637686529:AAE7tDyRx4wGyGijbpZhmizlXlv6wv2B2MI';
 var CHAT_ID   = '-5225232338';
-var AMOCRM_DOMAIN = 'your-domain.amocrm.ru';  // Клиент вставляет свой домен (например: volo.amocrm.ru)
-var AMOCRM_TOKEN = 'your-api-token';           // Клиент вставляет свой API токен
-var META_PIXEL_ID = 'your-pixel-id';           // Клиент вставляет свой Meta Pixel ID
+var WORKER_URL = 'https://volo-amocrm.volohomen1uz.workers.dev';
+var META_PIXEL_ID = '2066265433940004';
 
 /* ── Send to Telegram ── */
 function sendToTelegram(ism, telefon, model, manba) {
@@ -36,31 +35,12 @@ function sendToTelegram(ism, telefon, model, manba) {
   }).then(function(res) { return res.json(); });
 }
 
-/* ── Send to amoCRM ── */
+/* ── Send to amoCRM (через Cloudflare Worker) ── */
 function sendToAmoCRM(ism, telefon, model, manba) {
-  if (!AMOCRM_DOMAIN || AMOCRM_DOMAIN === 'your-domain.amocrm.ru' ||
-      !AMOCRM_TOKEN || AMOCRM_TOKEN === 'your-api-token') {
-    console.warn('amoCRM не настроен. Пропускаем отправку.');
-    return Promise.resolve({ ok: true });
-  }
-
-  var amoUrl = 'https://' + AMOCRM_DOMAIN + '/api/v4/contacts';
-  var contactData = {
-    name: ism,
-    custom_fields_values: [
-      { field_id: 1270170, values: [{ value: telefon }] },
-      { field_id: 1270171, values: [{ value: model }] },
-      { field_id: 1270172, values: [{ value: manba }] }
-    ]
-  };
-
-  return fetch(amoUrl, {
+  return fetch(WORKER_URL, {
     method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + AMOCRM_TOKEN,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(contactData)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ism: ism, telefon: telefon, model: model, manba: manba })
   })
   .then(function(res) { return res.json(); })
   .catch(function(err) {
@@ -71,11 +51,6 @@ function sendToAmoCRM(ism, telefon, model, manba) {
 
 /* ── Track Meta Pixel ── */
 function trackMetaPixel(ism, telefon, model) {
-  if (!META_PIXEL_ID || META_PIXEL_ID === 'your-pixel-id') {
-    console.warn('Meta Pixel не настроен. Пропускаем отправку.');
-    return;
-  }
-
   if (typeof fbq !== 'undefined') {
     fbq('track', 'Lead', {
       content_name: model,
@@ -172,19 +147,15 @@ function submitPopupForm(popupId, modelName) {
   .then(function(results) {
     trackMetaPixel(name, phone, modelName);
     if (results[0].ok || results[1].ok) {
-      // Показываем сообщение об успехе
       popup.querySelector('.popup-form-wrap').style.display = 'none';
       var successMsg = popup.querySelector('.popup-success');
       if (!successMsg) {
-        // Если элемента нет, создаём его
         successMsg = document.createElement('div');
         successMsg.className = 'popup-success';
         successMsg.innerHTML = '<p style="text-align: center; color: #2a9d2a; font-size: 16px; font-weight: bold;">✓ Ariza yuborildi!<br><span style="font-size: 13px; color: var(--muted);">Biz tez orada bog\'lanamiz</span></p>';
         popup.querySelector('.popup-box').appendChild(successMsg);
       }
       successMsg.style.display = 'block';
-
-      // Закрываем попап через 3 секунды
       setTimeout(function() { closePopup('popup-' + popupId); }, 3000);
     } else {
       btn.textContent = '\u274C Xatolik';
