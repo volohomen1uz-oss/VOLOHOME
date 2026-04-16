@@ -250,8 +250,8 @@ function submitConsult() {
 
   if (!ok) return;
 
-  var btn = document.querySelector('#popup-consult .btn-popup');
-  if (!btn) return;
+ var btn = document.querySelector('#popup-consult .btn-popup-submit');
+if (!btn) return;
   btn.textContent = '\u23F3 Yuborilmoqda...';
   btn.disabled = true;
 
