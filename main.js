@@ -6,7 +6,7 @@
 var BOT_TOKEN = '8637686529:AAE7tDyRx4wGyGijbpZhmizlXlv6wv2B2MI';
 var CHAT_ID   = '-5225232338';
 var WORKER_URL = 'https://volo-amocrm.volohomen1uz.workers.dev';
-var META_PIXEL_ID = '2066265433940004';
+var META_PIXEL_ID = '2218810208922383';
 
 /* ── Phone validation ── */
 /* Минимум 9 цифр (917773609 = 9 цифр), максимум 13 цифр */
