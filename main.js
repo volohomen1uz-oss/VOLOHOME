@@ -12,7 +12,7 @@ var META_PIXEL_ID = '2066265433940004';
 /* Минимум 9 цифр (917773609 = 9 цифр), максимум 13 цифр */
 function validatePhone(phone) {
   var digits = phone.replace(/\D/g, '');
-  return digits.length >= 9 && digits.length <= 13;
+  return digits.length >= 8 && digits.length <= 13;
 }
 
 /* ── Phone input: только цифры, +, (, ), -, пробел ── */
